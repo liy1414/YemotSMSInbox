@@ -52,7 +52,7 @@ const sendVerification = async () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        token: `${localStorage.getItem('username')}:${localStorage.getItem('password')}`,
+        token: `${encodeURIComponent(token)}`,
         action: 'send',
         callerId: cleanCallerId,
         validType: validType.value
@@ -92,7 +92,7 @@ const verifyCode = async () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        token: `${localStorage.getItem('username')}:${localStorage.getItem('password')}`,
+        token: `${encodeURIComponent(token)}`,
         action: 'valid',
         reId: reqId.value,
         code: verificationCode.value
